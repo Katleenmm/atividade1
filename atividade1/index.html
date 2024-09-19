@@ -18,16 +18,47 @@
             <p>Atendente diz:</p>
             <p class="caixa">No que posso ajudar?</p>
         </div>
-        <div class="msg2">
-            <p>Você diz:</p>
+        <div id="minhasMensagens" class="msg2">
+            <p id="frase">Você diz:</p>
             <p class="caixa">Minha encomenda ainda não chegou</p>
             <p>Você diz:</p>
             <p class="caixa">Pode me enviar o código de rastreio?</p>
         </div>
     </main>
-    <div class="envio">
-        <textarea class="input" name="mensagem" id="mensagem"></textarea>
-        <button class="envio">Enviar</button>
-    </div>
+    <form id="formMsg" class="envio">
+        <textarea id="msg_para_envio" class="input" name="mensagem" id="mensagem"></textarea>
+        <button id="btnAddMsg" type="submit" class="envio">Enviar</button>
+    </form>
+    <script>
+        const minhasMesagens = document.querySelector("#minhasMensagens");
+        const  msg_para_envio = document.querySelector("#msg_para_envio");
+        const formMsg = document.querySelector("#formMsg");
+
+        function adicionaMensagem() {
+            const msgEnvio = msg_para_envio.value;
+
+            const voce = document.createElement("p");
+            voce.innerHTML = "Você diz:";
+
+            minhasMesagens.appendChild(voce);
+
+            // <p></p>
+            const mensagem = document.createElement("p");
+            // <p class="caixa"></p>
+            mensagem.classList.add("caixa");
+            // <p class="caixa">...</p>
+            mensagem.innerHTML = `${msgEnvio}`;
+            
+            minhasMesagens.appendChild(mensagem);
+
+            msg_para_envio.value ="";
+      }
+
+      formMsg.addEventListener("submit", function (event) {
+        event.preventDefault();
+        adicionaMensagem();
+      });
+
+    </script>
 </body>
 </html>

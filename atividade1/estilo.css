@@ -41,7 +41,7 @@ main div .caixa{
   padding: 12px;
   gap: 20px;
 }
-div .input {
+form .input {
   flex: 1;
   font-size: 18px;
   line-height: 1;
